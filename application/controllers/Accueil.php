@@ -91,7 +91,7 @@ class Accueil extends CI_Controller {
             //}
         }
     }
-    /* 
+    
     public function send_mail(){
         $message=$this->input->post('mess');
         $email = $this -> uri -> segment(3);
@@ -101,6 +101,6 @@ class Accueil extends CI_Controller {
         $this->email->subject('reponce');
         $this->email->message($message);
         $this->email->send();
-    }*/
+    }
    
 }
