@@ -64,7 +64,7 @@ class Accueil extends CI_Controller {
         }
     }
 
-  /*  public function vue_changer_mdp(){
+   public function vue_changer_mdp(){
         $this->load->view("changer_mdp");
     }
     public function changer_mdp()
@@ -91,6 +91,7 @@ class Accueil extends CI_Controller {
             //}
         }
     }
+    /* 
     public function send_mail(){
         $message=$this->input->post('mess');
         $email = $this -> uri -> segment(3);
