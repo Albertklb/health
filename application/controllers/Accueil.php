@@ -16,49 +16,49 @@ class Accueil extends CI_Controller {
     }
     public function validation(){
        // $this->defaut();
-        $login=$this->input->post('login');
-        $mdp=$this->input->post('mdp');
-        $data=array(
-            'loginAdmin'=>$login,
-            'mdpAdmin'=> $mdp
+        $health_login=$this->input->post('login');
+        $health_mdp=$this->input->post('mdp');
+        $health_data=array(
+            'loginAdmin'=>$health_login,
+            'mdpAdmin'=> $health_mdp
         );
         $this->load->model('admin');
-        $ret= $this->admin->verifier($data);
-        if(count($ret)>0)
+        $health_ret= $this->admin->verifier($health_data);
+        if(count($health_ret)>0)
         {
-            $user=$ret[0];
-            $d=array (
+            $user=$health_ret[0];
+            $health_d=array (
                 //'id'=>$user->id,
                 'login'=>$user->loginAdmin,
                 'mdp'=>$user->mdpAdmin,
                 'is_connected'=>true
             );
-            $loginAdmin=$d['login'];
-            $mdpAdmin=$d['mdp'];
-            if($login=$loginAdmin && $mdp=$mdpAdmin)
+            $health_loginAdmin=$health_d['login'];
+            $health_mdpAdmin=$health_d['mdp'];
+            if($health_login==$health_loginAdmin && $health_mdp==$health_mdpAdmin)
             {
-                $this->session->set_userdata($d);
+                $this->session->set_userdata($health_d);
                 
             }
             else{
-                $d=array(
+                $health_d=array(
                     'error_login'=> 'login ou mot de passe incorrect'
                 );
-                $this->session->set_flashdata($d);
+                $this->session->set_flashdata($health_d);
                 $this->admin();
     
             }
             $this->load->model('admin');
-            $liste['data']= $this->admin->liste();
-            $this->load->view('accueil_admin',$liste);
+            $health_liste['data']= $this->admin->liste();
+            $this->load->view('accueil_admin',$health_liste);
 
         }
         else
         {
-            $d=array(
+            $health_d=array(
                 'error_login'=> 'login ou mot de passe incorrect'
             );
-            $this->session->set_flashdata($d);
+            $this->session->set_flashdata($health_d);
             $this->admin();
 
         }
@@ -69,37 +69,38 @@ class Accueil extends CI_Controller {
     }
     public function changer_mdp()
     {
-        $amdp=$this->input->post('amdp');
-        $nmdp=$this->input->post('nmdp');
-        $cmdp=$this->input->post('cmdp');
+        $health_amdp=$this->input->post('amdp');
+        $health_nmdp=$this->input->post('nmdp');
+        $health_cmdp=$this->input->post('cmdp');
         if($nmdp!=$cmdp){
 
         }
         else{
-            $date=array(
-                'mdpAdmin'=>$nmdp
+            $health_date=array(
+                'mdpAdmin'=>$health_nmdp
             );
 
            
                 $this->load->model('admin');
-                $this->admin->addmdp($amdp,$date); 
+                $this->admin->addmdp($amdp,$health_date); 
                 $this->load->model('admin');
                
-                $red=$this->admin->question(); 
-                $result=array('data'=>$red);
-                $this->load->view('accueil_admin',$result);      
+                $health_redsult=$this->admin->question(); 
+                $health_result=array('data'=>$health_redsult);
+                $this->load->view('accueil_admin',$health_result);      
             //}
         }
     }
     
     public function send_mail(){
-        $message=$this->input->post('mess');
-        $email = $this -> uri -> segment(3);
+      
+        $health_email = $this -> uri -> segment(3);
+        $health_message=$this->input->post('mess');
         $this->laod->library('email');
         $this->email->from('health_proximity@gmail.com');
-        $this->email->to($email);
+        $this->email->to($health_email);
         $this->email->subject('reponce');
-        $this->email->message($message);
+        $this->email->message($health_message);
         $this->email->send();
     }
    
