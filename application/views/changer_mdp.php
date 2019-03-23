@@ -2,5 +2,6 @@
     <input type="text" name="amdp" placeholder="ancien mot de passe"><br/>
     <input type="password" name="nmdp" placeholder="nouveau mot de passe"><br/>
     <input type="password" name="cmdp" placeholder="confirmer"><br/>
-    <input type="submit" value="se connecter">
+    <input type="submit" value="changer">
 </form>
+<a href="<?php echo site_url('Accueil/acc_admin');?>">retour</a>

@@ -14,6 +14,19 @@ class Accueil extends CI_Controller {
     {
         $this->load->view('accueil_admin');
     }
+    public function acc_admin(){
+        $this->load->model('admin');
+        $health_liste['data']= $this->admin->liste();
+        $this->load->view('accueil_admin',$health_liste);
+
+    }
+    public function parametre()
+    {
+        $this->load->model('admin');
+        $health_emails['data']= $this->admin->emails();
+        $this->load->view('parametre',$health_emails);
+        
+    } 
     public function validation(){
        // $this->defaut();
         $health_login=$this->input->post('login');
@@ -91,7 +104,24 @@ class Accueil extends CI_Controller {
             //}
         }
     }
-    
+     public function vue_ajouter_admin(){
+        $this->load->view("ajouter_admin");
+    }
+    public function deconnexion()
+    {
+        $this->session->unset_userdata('is_connected');
+        redirect('Accueil/admin');
+    }
+    public function ajouter_admin(){
+        $health_email=$this->input->post('email');
+        $health_data=array(
+            'email'=>health_email
+        );
+        $this->load->model('admin');
+        $this->admin->addemail($health_data); 
+        $health_msg= 'ajouter avec succes';
+        $this->load->view('conf_add_admin');  
+    }
     public function send_mail(){
       
         $health_email = $this -> uri -> segment(3);
@@ -103,5 +133,31 @@ class Accueil extends CI_Controller {
         $this->email->message($health_message);
         $this->email->send();
     }
+//     public function select_data()
+// 	{	//affiche les taches se trouvant dans la bdd sur la view liste_taches
+// 		$this->load->model('admin');
+// 		$donnee ['tache']=$this->admin->recupere_datas();
+// 		 $this->load->view('liste_taches',$donnee);
+// 	}
+
+// 	public function sup_tache()
+
+// 	{   //supprime la tache selectionnee
+// 		$idtache = $this -> uri -> segment(3);
+// 		$this -> load -> model('insertion_bdd');
+// 		$this -> insertion_bdd->sup_tache($idtache);
+// 		redirect('indexx/select_data');
+
+// 	}
+
+// 	public function conf_supp_tache()
+// 	{
+// 		$idtache = $this -> uri -> segment(3);
+// 		$this->load->model('insertion_bdd');
+// 		$resultat['res']=$this->insertion_bdd->afficher_tache($idtache);
+// 		$this->load->view('confirmation_supp_tache',$resultat);
+		
+
+// 	}
    
-}
+// }

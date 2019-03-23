@@ -7,6 +7,7 @@ class admin extends CI_Model
 {
     public $tabs='admin';
     public $table='question';
+    public $tablo='email';
     public function verifier($data)
     {
         $this->db->where($data);
@@ -35,6 +36,15 @@ class admin extends CI_Model
     {
         return $this->db->get($this->table)->result();
         
+    }
+    public function emails()
+    {
+        return $this->db->get($this->tablo)->result();
+        
+    }
+    public function addemail($infos)
+    {
+        $this->db->insert($this->tablo, $infos);
     }
     
 }
