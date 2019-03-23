@@ -31,7 +31,7 @@ class admin extends CI_Model
         return $this->db->query('select * from question');
 
     }
-    public function liste_questions()
+    public function liste()
     {
         return $this->db->get($this->table)->result();
         

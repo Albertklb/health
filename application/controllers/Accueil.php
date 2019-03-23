@@ -28,7 +28,7 @@ class Accueil extends CI_Controller {
         {
             $user=$ret[0];
             $d=array (
-                'id'=>$user->id,
+                //'id'=>$user->id,
                 'login'=>$user->loginAdmin,
                 'mdp'=>$user->mdpAdmin,
                 'is_connected'=>true
