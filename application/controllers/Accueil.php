@@ -39,7 +39,7 @@ class Accueil extends CI_Controller {
         );
         $this->load->model('admin');
         $health_ret= $this->admin->changer_profil($health_logon,$health_data);
-        $this->vue_changer_profil();
+        $this-accueil_admin();
     }
     public function validation(){
        // $this->defaut();
@@ -128,8 +128,14 @@ class Accueil extends CI_Controller {
     }
     public function ajouter_admin(){
         $health_email=$this->input->post('email');
+        $health_login=$this->input->post('login');
+        $health_mdp=$this->input->post('mdp');
+        $health_photo=$this->input->post('photo');
         $health_data=array(
-            'email'=>health_email
+            'loginAdmin'=>$health_login,
+            'mdpAdmin'=>$health_mdp,
+            'emailAdmin'=>$health_email,
+            'photoAdmin'=>$health_photo
         );
         $this->load->model('admin');
         $this->admin->addemail($health_data); 

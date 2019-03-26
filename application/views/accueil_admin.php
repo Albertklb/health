@@ -15,6 +15,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 ?>
 <a href="<?php echo site_url('Accueil/vue_changer_profil');?>">changer profile</a><br/><br/>
-
+<a href="<?php echo site_url('Accueil/vue_ajouter_admin');?>">ajouter_admin</a><br/><br/>
 
 <a href="<?php echo site_url('Accueil/parametre');?>">parametre</a><br/><br/>
