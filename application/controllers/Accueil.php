@@ -32,12 +32,14 @@ class Accueil extends CI_Controller {
     } 
     public function changer_profil($health_login){
         $health_photo=$this->input->post('photo');
+        $health_logon=$health_login;
         $health_data=array(
             
             'photoAdmin'=> $health_photo
         );
         $this->load->model('admin');
-        $health_ret= $this->admin->changer_profil($health_login,$health_data);
+        $health_ret= $this->admin->changer_profil($health_logon,$health_data);
+        $this->vue_changer_profil();
     }
     public function validation(){
        // $this->defaut();

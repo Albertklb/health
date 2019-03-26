@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <a href="<?php echo site_url('Accueil/vue_changer_mdp');?>">changer mot de passe</a><br/><br/>
 <a href="<?php echo site_url('Accueil/deconnexion');?>">deconnexion</a><br/><br/>
 <?php
-    echo 'Welcome '.$this->session->set_userdata('login');
+    echo 'Welcome '.$this->session->login;
+
     foreach($data as $val){
         echo $val->Messagepos;
         echo $val->Emailpos;
