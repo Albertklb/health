@@ -132,7 +132,7 @@ class Accueil extends CI_Controller {
         $this->email->subject('reponce');
         $this->email->message($health_message);
         $this->email->send();
-    }
+    }}
 //     public function select_data()
 // 	{	//affiche les taches se trouvant dans la bdd sur la view liste_taches
 // 		$this->load->model('admin');
