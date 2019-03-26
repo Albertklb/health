@@ -39,7 +39,7 @@ class Accueil extends CI_Controller {
         );
         $this->load->model('admin');
         $health_ret= $this->admin->changer_profil($health_logon,$health_data);
-        $this->accueil_admin();
+        $this->acc_admin();
     }
     public function validation(){
        // $this->defaut();
