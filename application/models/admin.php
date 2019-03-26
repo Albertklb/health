@@ -28,6 +28,11 @@ class admin extends CI_Model
         $this->db->where('mdpAdmin',$a);
         $this->db->update($this->tabs, $b);
     }
+    public function changer_profil($a,$b)
+    {
+        $this->db->where('photoAdmin',$a);
+        $this->db->update($this->tabs, $b);
+    }
     public function question(){
         return $this->db->query('select * from question');
 

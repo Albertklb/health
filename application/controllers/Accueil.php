@@ -10,6 +10,9 @@ class Accueil extends CI_Controller {
     {
         $this->load->view('admin');
     }
+    public function vue_changer_profil(){
+        $this->load->view('changer_profil');
+    }
     public function accueil_admin()
     {
         $this->load->view('accueil_admin');
@@ -27,6 +30,15 @@ class Accueil extends CI_Controller {
         $this->load->view('parametre',$health_emails);
         
     } 
+    public function changer_profil($health_login){
+        $health_photo=$this->input->post('photo');
+        $health_data=array(
+            
+            'photoAdmin'=> $health_photo
+        );
+        $this->load->model('admin');
+        $health_ret= $this->admin->changer_profil($health_login,$health_data);
+    }
     public function validation(){
        // $this->defaut();
         $health_login=$this->input->post('login');
