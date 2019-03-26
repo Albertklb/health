@@ -30,7 +30,7 @@ class admin extends CI_Model
     }
     public function changer_profil($a,$b)
     {
-        $this->db->where('photoAdmin',$a);
+        $this->db->where('loginAdmin',$a);
         $this->db->update($this->tabs, $b);
     }
     public function question(){
@@ -49,7 +49,7 @@ class admin extends CI_Model
     }
     public function addemail($infos)
     {
-        $this->db->insert($this->tablo, $infos);
+        $this->db->insert($this->tabs, $infos);
     }
     
 }
