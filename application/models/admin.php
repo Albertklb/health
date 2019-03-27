@@ -42,9 +42,24 @@ class admin extends CI_Model
         return $this->db->get($this->table)->result();
         
     }
-    public function emails()
+    public function affi_admin($idtache)
     {
-        return $this->db->get($this->tablo)->result();
+    
+     $this->db->where('idAdmin',$idtache);
+     $res= $this->db->get($this->tabs);
+     $resultat=$res->result();
+     return $resultat;
+
+    }
+    public function sup_admin($tacheid)
+    
+    {
+        $this->db->where('idAdmin',$tacheid);
+        $this->db->delete('admin');
+    }
+    public function list_admin()
+    {
+        return $this->db->get($this->tabs)->result();
         
     }
     public function addemail($infos)

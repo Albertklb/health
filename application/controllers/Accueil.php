@@ -13,9 +13,17 @@ class Accueil extends CI_Controller {
     public function vue_changer_profil(){
         $this->load->view('changer_profil');
     }
+    public function vue_conf_sup_admin(){
+        $this->load->view('conf_sup_admin');
+    }
     public function accueil_admin()
     {
         $this->load->view('accueil_admin');
+    }
+    public function vue_sup_admin(){
+        $this->load->model('admin');
+        $health_liste['data']= $this->admin->list_admin();
+        $this->load->view('sup_admin',$health_liste);
     }
     public function acc_admin(){
         $this->load->model('admin');
@@ -142,6 +150,15 @@ class Accueil extends CI_Controller {
         $health_msg= 'ajouter avec succes';
         $this->load->view('conf_add_admin');  
     }
+   public function sup_tache($health_b)
+    {   
+        $health_idtache = $health_b;
+        $this -> load -> model('admin');
+        $this -> admin->sup_admin($health_idtache);
+        redirect('Admin/acc_admin');
+
+   }
+
     public function send_mail(){
       
         $health_email = $this -> uri -> segment(3);
@@ -152,32 +169,17 @@ class Accueil extends CI_Controller {
         $this->email->subject('reponce');
         $this->email->message($health_message);
         $this->email->send();
-    }}
-//     public function select_data()
-// 	{	//affiche les taches se trouvant dans la bdd sur la view liste_taches
-// 		$this->load->model('admin');
-// 		$donnee ['tache']=$this->admin->recupere_datas();
-// 		 $this->load->view('liste_taches',$donnee);
-// 	}
-
-// 	public function sup_tache()
-
-// 	{   //supprime la tache selectionnee
-// 		$idtache = $this -> uri -> segment(3);
-// 		$this -> load -> model('insertion_bdd');
-// 		$this -> insertion_bdd->sup_tache($idtache);
-// 		redirect('indexx/select_data');
-
-// 	}
-
-// 	public function conf_supp_tache()
-// 	{
-// 		$idtache = $this -> uri -> segment(3);
-// 		$this->load->model('insertion_bdd');
-// 		$resultat['res']=$this->insertion_bdd->afficher_tache($idtache);
-// 		$this->load->view('confirmation_supp_tache',$resultat);
+    }
+ 	
+	public function conf_sup_admin($health_a)
+	{
+		$health_id = $health_a;
+    	$this->load->model('admin');
+        $health_result['res']=$this->admin->affi_admin($health_id);
+        //echo $a= $health_result['res']->loginAdmin;
+ 		$this->load->view('vue_conf_sup_admin',$health_result);
 		
 
-// 	}
+	}
    
-// }
+}
