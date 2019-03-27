@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Accueil extends CI_Controller {
+
+//METHODES D'APPELS DES VUES
+
     public function index()
 	{
 		$this->load->view('admin');
@@ -20,27 +23,49 @@ class Accueil extends CI_Controller {
     {
         $this->load->view('accueil_admin');
     }
+    public function vue_ajouter_admin(){
+        $this->load->view("ajouter_admin");
+    }
     public function vue_sup_admin(){
         $this->load->model('admin');
         $health_liste['data']= $this->admin->list_admin();
         $this->load->view('sup_admin',$health_liste);
+    }
+    public function vue_changer_mdp(){
+        $this->load->view("changer_mdp");
     }
     public function vue_messages(){
         $this->load->model('admin');
         $health_liste['data']= $this->admin->list_messages();
         $this->load->view('messages',$health_liste);
     }
+
+    //accueil admin
+
     public function acc_admin(){
         $this->load->model('admin');
         $health_liste['data']= $this->admin->liste();
         $this->load->view('accueil_admin',$health_liste);
 
     }
+    //vue confirmer suppression
+    public function conf_sup_admin($health_a)
+	{
+		$health_id=array('idAdmin'=>$health_a);
+        $this->load->model('admin');
+        $health_result['res']=$this->admin->affi_admin($health_id);
+       
+       $this->load->view('vue_conf_sup_admin',$health_result);
+		
+
+	}
     public function reponce()
     {
        
         
     } 
+//METHODES DES TRAITEMENTS
+
     public function changer_profil($health_login){
         $health_photo=$this->input->post('photo');
         $health_logon=$health_login;
@@ -103,9 +128,7 @@ class Accueil extends CI_Controller {
         }
     }
 
-   public function vue_changer_mdp(){
-        $this->load->view("changer_mdp");
-    }
+  
     public function changer_mdp()
     {
         $health_amdp=$this->input->post('amdp');
@@ -130,9 +153,7 @@ class Accueil extends CI_Controller {
             //}
         }
     }
-     public function vue_ajouter_admin(){
-        $this->load->view("ajouter_admin");
-    }
+    
     public function deconnexion()
     {
         $this->session->unset_userdata('is_connected');
@@ -178,15 +199,6 @@ class Accueil extends CI_Controller {
         $this->email->send();
     }
  	
-	public function conf_sup_admin($health_a)
-	{
-		$health_id=array('idAdmin'=>$health_a);
-        $this->load->model('admin');
-        $health_result['res']=$this->admin->affi_admin($health_id);
-       
-       $this->load->view('vue_conf_sup_admin',$health_result);
-		
-
-	}
+	
    
 }
