@@ -66,6 +66,7 @@ class Accueil extends CI_Controller {
                 //'id'=>$user->id,
                 'login'=>$user->loginAdmin,
                 'mdp'=>$user->mdpAdmin,
+                'photo'=>$user->photoAdmin,
                 'is_connected'=>true
             );
             $health_loginAdmin=$health_d['login'];
@@ -150,12 +151,15 @@ class Accueil extends CI_Controller {
         $health_msg= 'ajouter avec succes';
         $this->load->view('conf_add_admin');  
     }
-   public function sup_tache($health_b)
+   public function sup_admin($health_b)
     {   
         $health_idtache = $health_b;
         $this -> load -> model('admin');
         $this -> admin->sup_admin($health_idtache);
-        redirect('Admin/acc_admin');
+
+        $this->load->model('admin');
+        $health_liste['data']= $this->admin->liste();
+        $this->load->view('accueil_admin',$health_liste);
 
    }
 
@@ -173,11 +177,11 @@ class Accueil extends CI_Controller {
  	
 	public function conf_sup_admin($health_a)
 	{
-		$health_id = $health_a;
-    	$this->load->model('admin');
+		$health_id=array('idAdmin'=>$health_a);
+        $this->load->model('admin');
         $health_result['res']=$this->admin->affi_admin($health_id);
-        //echo $a= $health_result['res']->loginAdmin;
- 		$this->load->view('vue_conf_sup_admin',$health_result);
+       
+       $this->load->view('vue_conf_sup_admin',$health_result);
 		
 
 	}
