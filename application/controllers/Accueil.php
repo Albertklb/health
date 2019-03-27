@@ -139,7 +139,7 @@ class Accueil extends CI_Controller {
         $health_email=$this->input->post('email');
         $health_login=$this->input->post('login');
         $health_mdp=$this->input->post('mdp');
-        $health_photo=$this->input->post('photo');
+        $health_photo="accueil.png";
         $health_data=array(
             'loginAdmin'=>$health_login,
             'mdpAdmin'=>$health_mdp,
