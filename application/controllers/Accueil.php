@@ -25,17 +25,20 @@ class Accueil extends CI_Controller {
         $health_liste['data']= $this->admin->list_admin();
         $this->load->view('sup_admin',$health_liste);
     }
+    public function vue_messages(){
+        $this->load->model('admin');
+        $health_liste['data']= $this->admin->list_messages();
+        $this->load->view('messages',$health_liste);
+    }
     public function acc_admin(){
         $this->load->model('admin');
         $health_liste['data']= $this->admin->liste();
         $this->load->view('accueil_admin',$health_liste);
 
     }
-    public function parametre()
+    public function reponce()
     {
-        $this->load->model('admin');
-        $health_emails['data']= $this->admin->emails();
-        $this->load->view('parametre',$health_emails);
+       
         
     } 
     public function changer_profil($health_login){

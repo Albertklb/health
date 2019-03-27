@@ -60,6 +60,11 @@ class admin extends CI_Model
         return $this->db->get($this->tabs)->result();
         
     }
+    public function list_messages()
+    {
+        return $this->db->get($this->table)->result();
+        
+    }
     public function addemail($infos)
     {
         $this->db->insert($this->tabs, $infos);
