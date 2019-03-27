@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <a href="<?php echo site_url('Accueil/vue_changer_mdp');?>">changer mot de passe</a><br/><br/>
 <a href="<?php echo site_url('Accueil/deconnexion');?>">deconnexion</a><br/><br/>
 <a href="<?php echo site_url('Accueil/vue_changer_profil');?>">changer profile</a><br/><br/>
-
+<h5>_________________________________________________________________________________________</h5>
 
 <a href="<?php echo site_url('Accueil/vue_ajouter_admin');?>">ajouter_admin</a><br/><br/>
 <a href="<?php echo site_url('Accueil/vue_sup_admin');?>">supprimer_admin</a><br/><br/>
